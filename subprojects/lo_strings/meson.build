@@ -15,4 +15,3 @@ endif
 
 test('strings', executable('teststrings', 'stringtest_ok.cpp', dependencies : lo_strings_dep))
 
-
