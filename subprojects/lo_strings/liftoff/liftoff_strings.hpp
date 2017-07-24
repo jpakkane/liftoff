@@ -18,23 +18,21 @@
 
 #pragma once
 
+#include<string>
+
 #if defined _WIN32 || defined __CYGWIN__
-  #define LIFTOFF_ADDER_PUBLIC __declspec(dllexport)
+  #define LIFTOFF_STRINGS_PUBLIC __declspec(dllexport)
 #else
   #if defined __GNUC__
-    #define LIFTOFF_ADDER_PUBLIC __attribute__ ((visibility("default")))
+    #define LIFTOFF_STRINGS_PUBLIC __attribute__ ((visibility("default")))
   #else
     #pragma message ("Compiler does not support symbol visibility.")
-    #define LIFTOFF_ADDER_PUBLIC
+    #define LIFTOFF_STRINGS_PUBLIC
   #endif
 #endif
 
 namespace liftoff {
 
-class LIFTOFF_ADDER_PUBLIC Adder {
-public:
-
-    constexpr int add_numbers(int num1, int num2) const { return num1 + num2; };
-};
+std::string join_strings(const std::string &s1, const std::string &s2);
 
 }

@@ -14,27 +14,19 @@
  * limitations under the License.
  */
 
-// This one is a fully header only library.
+// This one does not use the Liftoff test framework
+// but instead rolls its own.
 
-#pragma once
+#include<liftoff/liftoff_strings.hpp>
 
-#if defined _WIN32 || defined __CYGWIN__
-  #define LIFTOFF_ADDER_PUBLIC __declspec(dllexport)
-#else
-  #if defined __GNUC__
-    #define LIFTOFF_ADDER_PUBLIC __attribute__ ((visibility("default")))
-  #else
-    #pragma message ("Compiler does not support symbol visibility.")
-    #define LIFTOFF_ADDER_PUBLIC
-  #endif
-#endif
+int main(int, char **) {
+    std::string s1("abc");
+    std::string s2("def");
+    std::string correct("abcdef");
 
-namespace liftoff {
-
-class LIFTOFF_ADDER_PUBLIC Adder {
-public:
-
-    constexpr int add_numbers(int num1, int num2) const { return num1 + num2; };
-};
-
+    std::string answer = liftoff::join_strings(s1, s2);
+    if(answer != correct) {
+        return 1;
+    }
+    return 0;
 }
