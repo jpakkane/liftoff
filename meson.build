@@ -1,7 +1,7 @@
 project('liftoff', 'cpp',
   default_options : 'cpp_std=c++11')
 
-subprojects = ['lo_test', 'lo_adder', 'lo_strings']
+subprojects = ['lo_test', 'lo_adder', 'lo_strings', 'lo_shuttle']
 
 chosen_subproject = get_option('module')
 
